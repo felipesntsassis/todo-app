@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 
+import axios from 'axios';
+
 import TodoList from './todoList';
 import TodoForm from './todoForm';
 
 import PageHeader from '../template/pageHeader';
+
+const URL = 'http://localhost:3003/api/todos';
 
 export default class Todo extends Component {
 
@@ -15,7 +19,10 @@ export default class Todo extends Component {
     }
 
     handleAdd() {
-        
+        const description = this.state.description;
+        axios.post(URL, { description }).then(resp => {
+            console.log('Funcionou!');
+        });
     }
 
     handleChange(e) {
