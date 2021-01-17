@@ -6,6 +6,15 @@ export const changeDescription = event => ({
     payload: event.target.value
 });
 
+export const add = (description) => {
+	const request = axios.post(`${URL}`, { description });
+
+	return {
+		type: 'TODO_ADDED',
+		payload: request,
+	};
+};
+
 export const search = () => {
     const request = axios.get(`${URL}?sort=-createdAt`);
 
@@ -13,4 +22,4 @@ export const search = () => {
         type: 'TODO_SEARCHED',
         payload: request
     };
-}
+};
